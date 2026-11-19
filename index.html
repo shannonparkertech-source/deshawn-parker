@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,8 @@
   <title>Deshawn Parker | AI and Business Automation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.replace("no-js","js");</script>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -33,11 +34,15 @@
     <section class="hero" id="home">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <h1>Less manual work.<br>More intelligent<br>business<span class="accent-period">.</span></h1>
-          <p class="lede">I help businesses automate workflows, connect systems, and put AI to work.</p>
-          <a class="btn" href="#contact">Start a Project</a>
+          <h1 data-reveal>Less manual work.<br>More intelligent business<span class="accent-period">.</span></h1>
+          <p class="hero-sub" data-reveal>Custom AI automations for trades, home services, and real estate businesses.</p>
+          <p class="lede" data-reveal>I help businesses automate workflows, connect systems, and put AI to work.</p>
+          <div class="hero-actions" data-reveal>
+            <a class="btn" href="#contact">Start a Project</a>
+            <a class="btn-link" href="#services">See services</a>
+          </div>
         </div>
-        <div class="hero-art">
+        <div class="hero-art" data-reveal>
           <div class="hero-visual">
             <picture>
               <source srcset="assets/hero-ai-core.webp" type="image/webp">
@@ -48,18 +53,12 @@
       </div>
     </section>
 
-    <div class="wave wave-from-light">
-<svg viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
-  <path fill="#CDD8E4" d="M0,36 C220,36 300,8 520,22 C820,44 1040,70 1440,40 L1440,80 L0,80 Z"/>
-  <path class="wave-stroke" fill="none" d="M0,36 C220,36 300,8 520,22 C820,44 1040,70 1440,40"/>
-</svg>
-</div>
 
     <section class="services" id="services">
       <div class="wrap">
-        <h2 class="section-title">Services</h2>
+        <div class="section-head" data-reveal><h2 class="section-title">Services</h2></div>
         <div class="service-grid">
-          <article class="service-card">
+          <article class="service-card" data-reveal>
             <div class="service-icon">
             <picture>
               <source srcset="assets/icon-automation.webp" type="image/webp">
@@ -69,7 +68,7 @@
             <h3>Business Automation</h3>
             <p>Automate repetitive tasks and business workflows.</p>
           </article>
-          <article class="service-card">
+          <article class="service-card" data-reveal>
             <div class="service-icon">
             <picture>
               <source srcset="assets/icon-ai.webp" type="image/webp">
@@ -79,7 +78,7 @@
             <h3>AI Solutions</h3>
             <p>Put practical AI tools to work.</p>
           </article>
-          <article class="service-card">
+          <article class="service-card" data-reveal>
             <div class="service-icon">
             <picture>
               <source srcset="assets/icon-integration.webp" type="image/webp">
@@ -89,7 +88,7 @@
             <h3>Systems Integration</h3>
             <p>Connect your business applications and systems.</p>
           </article>
-          <article class="service-card">
+          <article class="service-card" data-reveal>
             <div class="service-icon">
             <picture>
               <source srcset="assets/icon-consulting.webp" type="image/webp">
@@ -103,18 +102,12 @@
       </div>
     </section>
 
-    <div class="wave wave-from-stone">
-<svg viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
-  <path fill="#F6F8FB" d="M0,40 C240,8 420,8 640,28 C960,54 1200,64 1440,28 L1440,72 L0,72 Z"/>
-  <path class="wave-stroke" fill="none" d="M0,40 C240,8 420,8 640,28 C960,54 1200,64 1440,28"/>
-</svg>
-</div>
 
     <section class="process" id="process">
       <div class="wrap">
-        <h2 class="section-title">How I Work</h2>
+        <div class="section-head" data-reveal><h2 class="section-title">How I Work</h2></div>
         <ol class="steps">
-          <li class="step">
+          <li class="step" data-reveal>
             <div class="step-icon">
             <picture>
               <source srcset="assets/icon-discover.webp" type="image/webp">
@@ -125,7 +118,7 @@
             <h3>Discover</h3>
             <p>Understand the business and its needs.</p>
           </li>
-          <li class="step">
+          <li class="step" data-reveal>
             <div class="step-icon">
             <picture>
               <source srcset="assets/icon-design.webp" type="image/webp">
@@ -136,7 +129,7 @@
             <h3>Design</h3>
             <p>Plan the right solution.</p>
           </li>
-          <li class="step">
+          <li class="step" data-reveal>
             <div class="step-icon">
             <picture>
               <source srcset="assets/icon-implement.webp" type="image/webp">
@@ -147,7 +140,7 @@
             <h3>Implement</h3>
             <p>Build and connect the systems.</p>
           </li>
-          <li class="step">
+          <li class="step" data-reveal>
             <div class="step-icon">
             <picture>
               <source srcset="assets/icon-optimize.webp" type="image/webp">
@@ -162,16 +155,10 @@
       </div>
     </section>
 
-    <div class="wave wave-from-light">
-<svg viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
-  <path fill="#CDD8E4" d="M0,38 C200,38 340,10 560,24 C860,46 1080,66 1440,36 L1440,80 L0,80 Z"/>
-  <path class="wave-stroke" fill="none" d="M0,38 C200,38 340,10 560,24 C860,46 1080,66 1440,36"/>
-</svg>
-</div>
 
     <section class="about" id="about">
       <div class="wrap about-grid">
-        <div class="about-photo">
+        <div class="about-photo" data-reveal>
           <div class="about-photo-accent" aria-hidden="true"></div>
           <figure class="about-photo-frame">
             <picture>
@@ -180,8 +167,8 @@
             </picture>
           </figure>
         </div>
-        <div class="about-copy">
-          <h2 class="section-title">About</h2>
+        <div class="about-copy" data-reveal>
+          <h2 class="section-title eyebrow">About</h2>
           <h3>Hey, I'm Deshawn.</h3>
           <p>I've always been the guy who gets excited about new tech. When AI started changing what was possible, I went all in. I spent my time learning the tools, building with them, and figuring out how to make them actually useful for real businesses.</p>
           <p>What drives me is seeing businesses win. Too many owners are buried in busywork that eats up their day. I build simple automations that take that weight off, so they can get back to serving customers and growing.</p>
@@ -191,22 +178,16 @@
       </div>
     </section>
 
-    <div class="wave wave-from-stone">
-<svg viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
-  <path fill="#F6F8FB" d="M0,36 C260,12 440,10 680,30 C980,56 1220,60 1440,32 L1440,72 L0,72 Z"/>
-  <path class="wave-stroke" fill="none" d="M0,36 C260,12 440,10 680,30 C980,56 1220,60 1440,32"/>
-</svg>
-</div>
 
     <section class="contact" id="contact">
       <div class="wrap contact-grid">
-        <div class="contact-copy">
-          <h2 class="section-title">Contact</h2>
+        <div class="contact-copy" data-reveal>
+          <h2 class="section-title eyebrow">Contact</h2>
           <h3>Let's build something smarter.</h3>
           <p class="lede">Have a process that needs improving? Let's&nbsp;talk.</p>
           <a class="btn" href="#project-form">Start a Project</a>
         </div>
-        <div class="contact-form">
+        <div class="contact-form" data-reveal>
           <form id="project-form" action="#TODO-form-endpoint" method="post">
             <div class="form-fields">
               <div class="form-row two">
@@ -234,12 +215,6 @@
       </div>
     </section>
 
-    <div class="wave wave-from-light wave-to-footer">
-<svg viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
-  <path fill="#4F6C88" d="M0,40 C220,40 360,12 580,26 C880,48 1100,68 1440,38 L1440,80 L0,80 Z"/>
-  <path class="wave-stroke" fill="none" d="M0,40 C220,40 360,12 580,26 C880,48 1100,68 1440,38"/>
-</svg>
-</div>
   </main>
 
   <footer class="site-footer">

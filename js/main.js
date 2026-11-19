@@ -2,7 +2,6 @@
   const header = document.querySelector(".site-header");
   const form = document.getElementById("project-form");
   const success = document.getElementById("form-success");
-  const steps = document.querySelectorAll(".step");
 
   const onScroll = () => {
     if (!header) return;
@@ -40,28 +39,36 @@
     });
   }
 
-  if (steps.length && "IntersectionObserver" in window) {
-    const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!motionOk) {
-      steps.forEach((step) => step.classList.add("is-in"));
-    } else {
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-in");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.28, rootMargin: "0px 0px -40px 0px" }
-      );
-      steps.forEach((step, index) => {
-        step.style.transitionDelay = index * 110 + "ms";
-        io.observe(step);
-      });
-    }
-  } else {
-    steps.forEach((step) => step.classList.add("is-in"));
+  // Scroll reveals: small fade and slide up, staggered within each group.
+  const items = Array.from(document.querySelectorAll("[data-reveal]"));
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const showAll = () => items.forEach((el) => el.classList.add("is-in"));
+
+  if (!items.length) return;
+  if (reduced || !("IntersectionObserver" in window)) {
+    showAll();
+    return;
   }
+
+  // Stagger siblings that share a parent.
+  const groups = new Map();
+  items.forEach((el) => {
+    const key = el.parentElement;
+    const index = groups.get(key) || 0;
+    el.style.setProperty("--d", Math.min(index, 5) * 90 + "ms");
+    groups.set(key, index + 1);
+  });
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+  );
+  items.forEach((el) => io.observe(el));
 })();
