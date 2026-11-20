@@ -23,7 +23,7 @@
     const ctx = canvas.getContext("2d");
     const lines = Array.from(hero.querySelectorAll(".rline > span"));
     const side = Array.from(hero.querySelectorAll(".reveal-side > *"));
-    const COUNT = 121;
+    const COUNT = 91;
     const src = (i) => "assets/robot/f" + String(i + 1).padStart(3, "0") + ".webp";
     const frames = new Array(COUNT);
     let drawn = -1, want = reduced ? COUNT - 1 : 0, W = 0, H = 0, dpr = 1;
@@ -45,56 +45,84 @@
       canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
       draw(want, true);
     }
+    let layoutT = 0, lastLT = -1;
+    function rectFor(cw, ch, iw, ih, t) {
+      const portrait = W / H < 1;
+      // start: immersive; end: framed above the copy
+      let s0, s1, y0, y1;
+      if (portrait) {
+        s0 = (ch * 0.86) / ih; y0 = 0;
+        s1 = (ch * 0.6) / ih; y1 = ch * 0.03;
+      } else {
+        s0 = Math.max(cw / iw, ch / ih); y0 = (ch - ih * s0) / 2;
+        s1 = (ch * 0.64) / ih; y1 = 0;
+      }
+      const s = s0 + (s1 - s0) * t;
+      const dw = iw * s, dh = ih * s;
+      return { dx: (cw - dw) / 2, dy: y0 + (y1 - y0) * t, dw, dh };
+    }
+    function feather(x0, y0, x1, y1, a) {
+      const g = ctx.createLinearGradient(x0, y0, x1, y1);
+      g.addColorStop(0, "rgba(0,0,0," + a + ")");
+      g.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = g;
+    }
     function draw(i, force) {
       let k = i;
       while (k >= 0 && !(frames[k] && frames[k]._ok)) k--;
       if (k < 0) { k = i; while (k < COUNT && !(frames[k] && frames[k]._ok)) k++; if (k >= COUNT) return; }
-      if (k === drawn && !force) return;
+      if (k === drawn && !force && layoutT === lastLT) return;
       const img = frames[k];
       const cw = canvas.width, ch = canvas.height, iw = img.naturalWidth, ih = img.naturalHeight;
-      let dw, dh, dx, dy;
-      if (W / H < 1) {
-        dh = ch * 0.62; dw = dh * iw / ih; dx = (cw - dw) / 2; dy = ch * 0.05;
-      } else {
-        const s = Math.max(cw / iw, ch / ih);
-        dw = iw * s; dh = ih * s; dx = (cw - dw) / 2; dy = (ch - dh) / 2;
-      }
+      const r = rectFor(cw, ch, iw, ih, layoutT);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
       ctx.fillStyle = "#000"; ctx.fillRect(0, 0, cw, ch);
-      ctx.drawImage(img, dx, dy, dw, dh);
-      drawn = k;
+      ctx.drawImage(img, r.dx, r.dy, r.dw, r.dh);
+      // soft black fade on the frame edges that sit inside the canvas
+      const fx = r.dw * 0.14, fy = r.dh * 0.2;
+      if (r.dx > 0) {
+        feather(r.dx, 0, r.dx + fx, 0, 1); ctx.fillRect(r.dx, 0, fx + 1, ch);
+        feather(r.dx + r.dw, 0, r.dx + r.dw - fx, 0, 1); ctx.fillRect(r.dx + r.dw - fx - 1, 0, fx + 2, ch);
+      }
+      if (r.dy + r.dh < ch) { feather(0, r.dy + r.dh, 0, r.dy + r.dh - fy, 1); ctx.fillRect(0, r.dy + r.dh - fy, cw, fy + 1); }
+      drawn = k; lastLT = layoutT;
     }
     function setText(p) {
-      const portrait = W / H < 1;
       hero.style.setProperty("--intro", (1 - clamp((p - 0.02) / 0.1)).toFixed(3));
-      stage.style.setProperty("--scrim", portrait ? 1 : clamp((p - 0.3) / 0.2).toFixed(3));
+      layoutT = ease(clamp((p - 0.5) / 0.25));
+      stage.style.setProperty("--scrim", clamp((p - 0.55) / 0.2).toFixed(3));
       lines.forEach((el, i) => {
-        const e = ease(clamp((p - (0.36 + i * 0.05)) / 0.14));
+        const e = ease(clamp((p - (0.6 + i * 0.06)) / 0.14));
         el.style.setProperty("--ty", ((1 - e) * 100).toFixed(1) + "%");
         el.style.setProperty("--op", e.toFixed(3));
       });
       side.forEach((el, i) => {
-        const e = ease(clamp((p - (0.54 + i * 0.07)) / 0.14));
-        el.style.setProperty("--ty", ((1 - e) * 20).toFixed(1) + "px");
+        const e = ease(clamp((p - (0.72 + i * 0.06)) / 0.12));
+        el.style.setProperty("--ty", ((1 - e) * 16).toFixed(1) + "px");
         el.style.setProperty("--op", e.toFixed(3));
         if (el.tagName === "A") el.style.visibility = e < 0.05 ? "hidden" : "visible";
       });
     }
+    const progress = () => {
+      const top = header ? header.offsetHeight : 0;
+      const span = hero.offsetHeight - stage.offsetHeight;
+      return clamp((top - hero.getBoundingClientRect().top) / span);
+    };
     revealUpdate = function () {
       if (reduced) return;
-      const r = hero.getBoundingClientRect();
-      const span = hero.offsetHeight - window.innerHeight;
-      const p = clamp(-r.top / span);
-      want = Math.round(clamp(p / 0.72) * (COUNT - 1));
+      const p = progress();
+      want = Math.round(clamp(p / 0.55) * (COUNT - 1));
       if (!frames[want]) load(want);
-      draw(want);
       setText(p);
+      draw(want);
     };
-    hero.__progress = () => clamp(-hero.getBoundingClientRect().top / (hero.offsetHeight - window.innerHeight));
     window.__reveal = { get drawn() { return drawn; }, get loaded() { return frames.filter((f) => f && f._ok).length; } };
 
     if (reduced) {
       load(COUNT - 1);
       setText(1);
+      layoutT = 1;
       window.addEventListener("resize", size);
       size();
       return;
@@ -118,10 +146,6 @@
   function update() {
     ticking = false;
     const vh = window.innerHeight;
-    if (header) {
-      const heroEnd = hero ? hero.offsetTop + hero.offsetHeight - header.offsetHeight - 2 : 24;
-      header.classList.toggle("is-solid", window.scrollY > heroEnd);
-    }
     if (revealUpdate) revealUpdate();
 
     if (!reduced) {
@@ -152,6 +176,19 @@
   update();
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
+
+  /* Mobile menu */
+  const toggle = document.querySelector(".menu-toggle");
+  if (toggle && header) {
+    const setMenu = (open) => {
+      header.classList.toggle("menu-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+    toggle.addEventListener("click", () => setMenu(!header.classList.contains("menu-open")));
+    header.querySelectorAll(".header-nav a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+  }
 
   /* Anchor scrolling */
   document.querySelectorAll('a[href^="#"]').forEach((link) => {

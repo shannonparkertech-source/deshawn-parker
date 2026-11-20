@@ -8,11 +8,11 @@
   <title>Deshawn Parker | AI and Business Automation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/robot/f001.webp" type="image/webp">
   <script>document.documentElement.classList.replace("no-js","js");</script>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css?v=20261119h">
+  <link rel="stylesheet" href="css/styles.css?v=20261119i">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -20,13 +20,17 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="#home">Deshawn Parker</a>
-      <nav class="header-nav" aria-label="Primary">
+      <nav class="header-nav" id="site-nav" aria-label="Primary">
         <a href="#automations">What I Automate</a>
         <a href="#services">Services</a>
         <a href="#process">How I Work</a>
         <a href="#about">About</a>
+        <a class="nav-contact" href="#contact">Contact</a>
       </nav>
-      <a class="btn btn-nav btn-sm" href="#contact">Start a Project</a>
+      <div class="header-actions">
+        <a class="btn btn-nav btn-sm" href="#contact">Start a Project</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button>
+      </div>
     </div>
   </header>
 
@@ -44,8 +48,7 @@
         <div class="wrap reveal-copy">
           <h1 class="reveal-title">
             <span class="rline"><span>Less manual work.</span></span>
-            <span class="rline"><span>More <em>intelligent</em></span></span>
-            <span class="rline"><span>business.</span></span>
+            <span class="rline rline-dim"><span>More intelligent business.</span></span>
           </h1>
           <div class="reveal-side">
             <p class="hero-sub">Custom AI automations for trades, home services, and real estate businesses.</p>
@@ -323,6 +326,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20261119h"></script>
+  <script src="js/main.js?v=20261119i"></script>
 </body>
 </html>
