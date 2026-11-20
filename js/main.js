@@ -46,20 +46,23 @@
       draw(want, true);
     }
     let layoutT = 0, lastLT = -1;
+    // Robot extent inside a frame (fraction of frame height): head top and platform bottom.
+    const F_HEAD = 0.07, F_BOT = 0.95;
+    const copy = hero.querySelector(".reveal-copy");
+    function gapTop() { return W < 600 ? 32 : W < 1000 ? 48 : 56; }
     function rectFor(cw, ch, iw, ih, t) {
       const portrait = W / H < 1;
-      // start: immersive; end: framed above the copy
-      let s0, s1, y0, y1;
-      if (portrait) {
-        s0 = (ch * 0.86) / ih; y0 = 0;
-        s1 = (ch * 0.6) / ih; y1 = ch * 0.03;
-      } else {
-        s0 = Math.max(cw / iw, ch / ih); y0 = (ch - ih * s0) / 2;
-        s1 = (ch * 0.64) / ih; y1 = 0;
-      }
-      const s = s0 + (s1 - s0) * t;
-      const dw = iw * s, dh = ih * s;
-      return { dx: (cw - dw) / 2, dy: y0 + (y1 - y0) * t, dw, dh };
+      const G = gapTop() * dpr;
+      const span = F_BOT - F_HEAD;
+      // start: as immersive as possible while the head clears the nav and the platform stays in view
+      let dh0 = portrait ? ch * 0.86 : Math.max(cw / iw, ch / ih) * ih;
+      dh0 = Math.min(dh0, (ch - G - 8 * dpr) / span);
+      // end: framed above the centered copy
+      const copyTop = (copy ? copy.offsetTop : H * 0.7) * dpr;
+      let dh1 = Math.min(ch * (portrait ? 0.6 : 0.64), (copyTop - G - 20 * dpr) / span);
+      const dh = dh0 + (dh1 - dh0) * t;
+      const dw = dh * iw / ih;
+      return { dx: (cw - dw) / 2, dy: G - F_HEAD * dh, dw, dh };
     }
     function feather(x0, y0, x1, y1, a) {
       const g = ctx.createLinearGradient(x0, y0, x1, y1);
@@ -85,6 +88,7 @@
         feather(r.dx, 0, r.dx + fx, 0, 1); ctx.fillRect(r.dx, 0, fx + 1, ch);
         feather(r.dx + r.dw, 0, r.dx + r.dw - fx, 0, 1); ctx.fillRect(r.dx + r.dw - fx - 1, 0, fx + 2, ch);
       }
+      if (r.dy > 0) { feather(0, r.dy, 0, r.dy + fy * 0.6, 1); ctx.fillRect(0, r.dy - 1, cw, fy * 0.6 + 1); ctx.fillStyle = "#000"; ctx.fillRect(0, 0, cw, r.dy); }
       if (r.dy + r.dh < ch) { feather(0, r.dy + r.dh, 0, r.dy + r.dh - fy, 1); ctx.fillRect(0, r.dy + r.dh - fy, cw, fy + 1); }
       drawn = k; lastLT = layoutT;
     }
