@@ -180,9 +180,9 @@
       }
     }
     render();
-    if (visible) raf = requestAnimationFrame(tick);
+    if (visible || dragging || target !== null) raf = requestAnimationFrame(tick);
   }
-  const start = () => { if (!raf && visible) raf = requestAnimationFrame(tick); };
+  const start = () => { if (!raf && (visible || target !== null)) raf = requestAnimationFrame(tick); };
 
   scene.addEventListener("pointerdown", (e) => {
     if (e.pointerType === "mouse" && e.button !== 0) return;
@@ -190,6 +190,7 @@
     lastX = e.clientX; lastT = performance.now(); vel = 0;
     scene.classList.add("is-dragging");
     try { scene.setPointerCapture(e.pointerId); } catch (_) {}
+    start();
   });
   scene.addEventListener("pointermove", (e) => {
     if (!dragging) return;
@@ -209,6 +210,7 @@
     const proj = angle + vel * 14;
     target = Math.round(proj / STEP) * STEP;
     vel = 0;
+    start();
   };
   scene.addEventListener("pointerup", end);
   scene.addEventListener("pointercancel", end);
