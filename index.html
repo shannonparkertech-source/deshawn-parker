@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Deshawn Parker builds custom AI automations for trades, home services, and real estate businesses.">
-  <meta name="theme-color" content="#4F6C88">
+  <meta name="theme-color" content="#000000">
   <title>Deshawn Parker | AI and Business Automation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/hero-dusk.webp" type="image/webp" media="(min-width: 701px)">
-  <link rel="preload" as="image" href="assets/hero-dusk-mobile.webp" type="image/webp" media="(max-width: 700px)">
+  <link rel="preload" as="image" href="assets/robot/f001.webp" type="image/webp">
   <script>document.documentElement.classList.replace("no-js","js");</script>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css?v=20261119g">
+  <link rel="stylesheet" href="css/styles.css?v=20261119h">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -32,24 +31,37 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="home">
-      <div class="hero-bg" data-parallax="0.22" aria-hidden="true"></div>
-      <div class="hero-shade" aria-hidden="true"></div>
+    <section class="reveal" id="home" aria-label="Introduction">
+      <div class="reveal-stage">
+        <canvas class="reveal-canvas" aria-hidden="true"></canvas>
+        <div class="reveal-scrim" aria-hidden="true"></div>
 
-      <div class="wrap hero-content">
-        <h1 class="lines"><span class="line"><span>Less manual work.</span></span><span class="line"><span>More <em>intelligent</em> business<span class="accent">.</span></span></span></h1>
-        <p class="hero-sub" data-reveal>Custom AI automations for trades, home services, and real estate businesses.</p>
-        <div class="hero-cta" data-reveal>
-          <a class="btn btn-light" href="#contact">Start a Project</a>
+        <div class="reveal-intro" aria-hidden="true">
+          <p class="label label-center">AI Automation</p>
+        </div>
+        <p class="reveal-cue mono" aria-hidden="true">Scroll to reveal</p>
+
+        <div class="wrap reveal-copy">
+          <h1 class="reveal-title">
+            <span class="rline"><span>Less manual work.</span></span>
+            <span class="rline"><span>More <em>intelligent</em></span></span>
+            <span class="rline"><span>business.</span></span>
+          </h1>
+          <div class="reveal-side">
+            <p class="hero-sub">Custom AI automations for trades, home services, and real estate businesses.</p>
+            <a class="btn btn-light" href="#contact">Start a Project</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="wrap hero-stats" data-reveal>
+    <section class="stats-band" aria-label="At a glance">
+      <div class="wrap">
         <dl class="stats">
-          <div class="stat"><dt class="stat-num"><span data-count="5">5</span> Days</dt><dd>Starter build</dd></div>
-          <div class="stat"><dt class="stat-num"><span data-count="2">2</span> Weeks</dt><dd>Growth build</dd></div>
-          <div class="stat"><dt class="stat-num"><span data-count="24">24</span>/7</dt><dd>Automations running</dd></div>
-          <div class="stat"><dt class="stat-num"><span data-count="3">3</span></dt><dd>Industries served</dd></div>
+          <div class="stat" data-reveal><dt class="stat-num"><span data-count="5">5</span> Days</dt><dd>Starter build</dd></div>
+          <div class="stat" data-reveal><dt class="stat-num"><span data-count="2">2</span> Weeks</dt><dd>Growth build</dd></div>
+          <div class="stat" data-reveal><dt class="stat-num"><span data-count="24">24</span>/7</dt><dd>Automations running</dd></div>
+          <div class="stat" data-reveal><dt class="stat-num"><span data-count="3">3</span></dt><dd>Industries served</dd></div>
         </dl>
       </div>
     </section>
@@ -161,41 +173,29 @@
     <section class="services" id="services">
       <div class="wrap">
         <div class="sec-head">
-          <p class="label label-light">Services</p>
+          <p class="label">Services</p>
           <h2 class="mask"><span>Four ways I help.</span></h2>
         </div>
         <div class="svc-grid">
           <article class="svc" data-reveal>
-            <div class="svc-icon"><picture><source srcset="assets/icon-automation.webp" type="image/webp"><img src="assets/icon-automation.png" alt="" width="320" height="320"></picture></div>
-            <div class="svc-body">
-              <span class="mono svc-num">01</span>
-              <h3>Business Automation</h3>
-              <p>Automate repetitive tasks and business workflows.</p>
-            </div>
+            <div class="svc-top"><span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></g></svg></span><span class="mono">01</span></div>
+            <h3>Business Automation</h3>
+            <p>Automate repetitive tasks and business workflows.</p>
           </article>
           <article class="svc" data-reveal>
-            <div class="svc-icon"><picture><source srcset="assets/icon-ai.webp" type="image/webp"><img src="assets/icon-ai.png" alt="" width="320" height="320"></picture></div>
-            <div class="svc-body">
-              <span class="mono svc-num">02</span>
-              <h3>AI Solutions</h3>
-              <p>Put practical AI tools to work.</p>
-            </div>
+            <div class="svc-top"><span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9.5 9.5h5v5h-5zM9 2.5v3.5M15 2.5v3.5M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></g></svg></span><span class="mono">02</span></div>
+            <h3>AI Solutions</h3>
+            <p>Put practical AI tools to work.</p>
           </article>
           <article class="svc" data-reveal>
-            <div class="svc-icon"><picture><source srcset="assets/icon-integration.webp" type="image/webp"><img src="assets/icon-integration.png" alt="" width="320" height="320"></picture></div>
-            <div class="svc-body">
-              <span class="mono svc-num">03</span>
-              <h3>Systems Integration</h3>
-              <p>Connect your business applications and systems.</p>
-            </div>
+            <div class="svc-top"><span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="8" height="6" rx="1"/><rect x="13.5" y="14" width="8" height="6" rx="1"/><path d="M6.5 10v4.5a2 2 0 0 0 2 2h5M17.5 14V9.5a2 2 0 0 0-2-2h-5"/></g></svg></span><span class="mono">03</span></div>
+            <h3>Systems Integration</h3>
+            <p>Connect your business applications and systems.</p>
           </article>
           <article class="svc" data-reveal>
-            <div class="svc-icon"><picture><source srcset="assets/icon-consulting.webp" type="image/webp"><img src="assets/icon-consulting.png" alt="" width="320" height="320"></picture></div>
-            <div class="svc-body">
-              <span class="mono svc-num">04</span>
-              <h3>Automation Consulting</h3>
-              <p>Find inefficiencies and build smarter processes.</p>
-            </div>
+            <div class="svc-top"><span class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 6 6"/><path d="M7.5 11.5l2 2 4-4.5"/></g></svg></span><span class="mono">04</span></div>
+            <h3>Automation Consulting</h3>
+            <p>Find inefficiencies and build smarter processes.</p>
           </article>
         </div>
       </div>
@@ -206,14 +206,14 @@
         <div class="process-side">
           <p class="label">How I Work</p>
           <h2 class="mask"><span>Four steps.<br>No guesswork.</span></h2>
-          <p class="process-count mono" aria-hidden="true"><span id="stepNow">01</span> / 04</p>
+          <p class="process-count" aria-hidden="true"><span id="stepNow">01</span><span class="mono"> / 04</span></p>
         </div>
         <div class="process-track">
           <span class="ptrack" aria-hidden="true"><span class="ptrack-fill"></span></span>
           <ol class="psteps">
             <li class="pstep" data-step="0">
               <span class="pstep-dot" aria-hidden="true"></span>
-              <div class="pstep-icon"><picture><source srcset="assets/icon-discover.webp" type="image/webp"><img src="assets/icon-discover.png" alt="" width="320" height="320"></picture></div>
+              <span class="pstep-num" aria-hidden="true">01</span>
               <div>
                 <span class="mono">Step 01</span>
                 <h3>Discover</h3>
@@ -222,7 +222,7 @@
             </li>
             <li class="pstep" data-step="1">
               <span class="pstep-dot" aria-hidden="true"></span>
-              <div class="pstep-icon"><picture><source srcset="assets/icon-design.webp" type="image/webp"><img src="assets/icon-design.png" alt="" width="320" height="320"></picture></div>
+              <span class="pstep-num" aria-hidden="true">02</span>
               <div>
                 <span class="mono">Step 02</span>
                 <h3>Design</h3>
@@ -231,7 +231,7 @@
             </li>
             <li class="pstep" data-step="2">
               <span class="pstep-dot" aria-hidden="true"></span>
-              <div class="pstep-icon"><picture><source srcset="assets/icon-implement.webp" type="image/webp"><img src="assets/icon-implement.png" alt="" width="320" height="320"></picture></div>
+              <span class="pstep-num" aria-hidden="true">03</span>
               <div>
                 <span class="mono">Step 03</span>
                 <h3>Implement</h3>
@@ -240,7 +240,7 @@
             </li>
             <li class="pstep" data-step="3">
               <span class="pstep-dot" aria-hidden="true"></span>
-              <div class="pstep-icon"><picture><source srcset="assets/icon-optimize.webp" type="image/webp"><img src="assets/icon-optimize.png" alt="" width="320" height="320"></picture></div>
+              <span class="pstep-num" aria-hidden="true">04</span>
               <div>
                 <span class="mono">Step 04</span>
                 <h3>Optimize</h3>
@@ -254,24 +254,17 @@
 
     <section class="about" id="about">
       <div class="wrap about-grid">
-        <figure class="portrait" data-reveal>
-          <picture>
-            <source srcset="assets/portrait.webp" type="image/webp">
-            <img src="assets/portrait.jpg" alt="Illustrated portrait of Deshawn Parker" width="768" height="1024">
-          </picture>
-          <figcaption class="mono"><span>Deshawn Parker</span><span>AI automation</span></figcaption>
-        </figure>
-        <div class="about-copy">
-          <p class="label label-dark">About</p>
+        <div class="about-head">
+          <p class="label">About</p>
           <h2 class="mask"><span>Hey, I'm Deshawn.</span></h2>
-          <div class="about-text" data-reveal>
-            <p class="about-lede">I've always been the guy who gets excited about new tech. When AI started changing what was possible, I went all in. I spent my time learning the tools, building with them, and figuring out how to make them actually useful for real businesses.</p>
-            <div class="about-cols">
-              <p>What drives me is seeing businesses win. Too many owners are buried in busywork that eats up their day. I build simple automations that take that weight off, so they can get back to serving customers and growing.</p>
-              <p>If something in your business is slowing you down, I'd love to help you fix it.</p>
-            </div>
+        </div>
+        <div class="about-text" data-reveal>
+          <p class="about-lede">I've always been the guy who gets excited about new tech. When AI started changing what was possible, I went all in. I spent my time learning the tools, building with them, and figuring out how to make them actually useful for real businesses.</p>
+          <div class="about-cols">
+            <p>What drives me is seeing businesses win. Too many owners are buried in busywork that eats up their day. I build simple automations that take that weight off, so they can get back to serving customers and growing.</p>
+            <p>If something in your business is slowing you down, I'd love to help you fix it.</p>
           </div>
-          <a class="btn btn-dark" href="#contact" data-reveal>Start a Project</a>
+          <a class="btn btn-dark" href="#contact">Start a Project</a>
         </div>
       </div>
     </section>
@@ -279,8 +272,8 @@
     <section class="band" aria-labelledby="band-title">
       <div class="band-bg" data-parallax="0.18" aria-hidden="true"></div>
       <div class="wrap band-inner">
-        <h2 id="band-title" class="mask"><span>Let's build something smarter<span class="accent">.</span></span></h2>
-        <a class="btn btn-light" href="#contact" data-reveal>Start a Project</a>
+        <h2 id="band-title" class="mask"><span>Let's build something smarter.</span></h2>
+        <a class="btn btn-outline" href="#contact" data-reveal>Start a Project</a>
       </div>
     </section>
 
@@ -330,6 +323,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20261119g"></script>
+  <script src="js/main.js?v=20261119h"></script>
 </body>
 </html>

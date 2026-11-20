@@ -12,11 +12,117 @@
   const fill = document.querySelector(".ptrack-fill");
   const stepNow = document.getElementById("stepNow");
   let ticking = false;
+  const hero = document.querySelector(".reveal");
+  let revealUpdate = null;
+
+  /* Hero: scroll-scrubbed robot reveal drawn to canvas */
+  (function () {
+    if (!hero) return;
+    const stage = hero.querySelector(".reveal-stage");
+    const canvas = hero.querySelector(".reveal-canvas");
+    const ctx = canvas.getContext("2d");
+    const lines = Array.from(hero.querySelectorAll(".rline > span"));
+    const side = Array.from(hero.querySelectorAll(".reveal-side > *"));
+    const COUNT = 121;
+    const src = (i) => "assets/robot/f" + String(i + 1).padStart(3, "0") + ".webp";
+    const frames = new Array(COUNT);
+    let drawn = -1, want = reduced ? COUNT - 1 : 0, W = 0, H = 0, dpr = 1;
+    const clamp = (v) => Math.max(0, Math.min(1, v));
+    const ease = (t) => 1 - Math.pow(1 - t, 3);
+
+    function load(i) {
+      if (frames[i]) return frames[i];
+      const img = new Image();
+      img.decoding = "async";
+      img.onload = () => { img._ok = true; if (Math.abs(i - want) < Math.abs(drawn - want) || drawn < 0) draw(want, true); };
+      img.src = src(i);
+      frames[i] = img;
+      return img;
+    }
+    function size() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = stage.clientWidth; H = stage.clientHeight;
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      draw(want, true);
+    }
+    function draw(i, force) {
+      let k = i;
+      while (k >= 0 && !(frames[k] && frames[k]._ok)) k--;
+      if (k < 0) { k = i; while (k < COUNT && !(frames[k] && frames[k]._ok)) k++; if (k >= COUNT) return; }
+      if (k === drawn && !force) return;
+      const img = frames[k];
+      const cw = canvas.width, ch = canvas.height, iw = img.naturalWidth, ih = img.naturalHeight;
+      let dw, dh, dx, dy;
+      if (W / H < 1) {
+        dh = ch * 0.62; dw = dh * iw / ih; dx = (cw - dw) / 2; dy = ch * 0.05;
+      } else {
+        const s = Math.max(cw / iw, ch / ih);
+        dw = iw * s; dh = ih * s; dx = (cw - dw) / 2; dy = (ch - dh) / 2;
+      }
+      ctx.fillStyle = "#000"; ctx.fillRect(0, 0, cw, ch);
+      ctx.drawImage(img, dx, dy, dw, dh);
+      drawn = k;
+    }
+    function setText(p) {
+      const portrait = W / H < 1;
+      hero.style.setProperty("--intro", (1 - clamp((p - 0.02) / 0.1)).toFixed(3));
+      stage.style.setProperty("--scrim", portrait ? 1 : clamp((p - 0.3) / 0.2).toFixed(3));
+      lines.forEach((el, i) => {
+        const e = ease(clamp((p - (0.36 + i * 0.05)) / 0.14));
+        el.style.setProperty("--ty", ((1 - e) * 100).toFixed(1) + "%");
+        el.style.setProperty("--op", e.toFixed(3));
+      });
+      side.forEach((el, i) => {
+        const e = ease(clamp((p - (0.54 + i * 0.07)) / 0.14));
+        el.style.setProperty("--ty", ((1 - e) * 20).toFixed(1) + "px");
+        el.style.setProperty("--op", e.toFixed(3));
+        if (el.tagName === "A") el.style.visibility = e < 0.05 ? "hidden" : "visible";
+      });
+    }
+    revealUpdate = function () {
+      if (reduced) return;
+      const r = hero.getBoundingClientRect();
+      const span = hero.offsetHeight - window.innerHeight;
+      const p = clamp(-r.top / span);
+      want = Math.round(clamp(p / 0.72) * (COUNT - 1));
+      if (!frames[want]) load(want);
+      draw(want);
+      setText(p);
+    };
+    hero.__progress = () => clamp(-hero.getBoundingClientRect().top / (hero.offsetHeight - window.innerHeight));
+    window.__reveal = { get drawn() { return drawn; }, get loaded() { return frames.filter((f) => f && f._ok).length; } };
+
+    if (reduced) {
+      load(COUNT - 1);
+      setText(1);
+      window.addEventListener("resize", size);
+      size();
+      return;
+    }
+    load(0);
+    size();
+    setText(0);
+    window.addEventListener("resize", size);
+    // Lazy-load the rest in order once the page has settled.
+    const rest = () => {
+      let i = 1;
+      (function next() {
+        const batch = Math.min(COUNT, i + 6);
+        for (; i < batch; i++) load(i);
+        if (i < COUNT) setTimeout(next, 60);
+      })();
+    };
+    if (document.readyState === "complete") rest(); else window.addEventListener("load", rest);
+  })();
 
   function update() {
     ticking = false;
     const vh = window.innerHeight;
-    if (header) header.classList.toggle("is-solid", window.scrollY > 24);
+    if (header) {
+      const heroEnd = hero ? hero.offsetTop + hero.offsetHeight - header.offsetHeight - 2 : 24;
+      header.classList.toggle("is-solid", window.scrollY > heroEnd);
+    }
+    if (revealUpdate) revealUpdate();
 
     if (!reduced) {
       parallax.forEach((el) => {
