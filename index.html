@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Deshawn Parker helps businesses automate workflows, connect systems, and put AI to work.">
-  <meta name="theme-color" content="#070E1F">
+  <meta name="description" content="Deshawn Parker builds custom AI automations for trades, home services, and real estate businesses.">
+  <meta name="theme-color" content="#4F6C88">
   <title>Deshawn Parker | AI and Business Automation</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-dusk.webp" type="image/webp" media="(min-width: 701px)">
   <link rel="preload" as="image" href="assets/hero-dusk-mobile.webp" type="image/webp" media="(max-width: 700px)">
   <script>document.documentElement.classList.replace("no-js","js");</script>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css?v=20261119e">
+  <link rel="stylesheet" href="css/styles.css?v=20261119f">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -22,10 +25,10 @@
     <div class="wrap header-inner">
       <a class="brand" href="#home">Deshawn Parker</a>
       <nav class="header-nav" aria-label="Primary">
+        <a href="#automations">What I Automate</a>
         <a href="#services">Services</a>
         <a href="#process">How I Work</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
       </nav>
       <a class="btn btn-nav btn-sm" href="#contact">Start a Project</a>
     </div>
@@ -33,11 +36,11 @@
 
   <main id="main">
     <section class="hero" id="home">
-      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-bg" data-parallax="0.22" aria-hidden="true"></div>
       <div class="hero-shade" aria-hidden="true"></div>
 
       <div class="wrap hero-content">
-        <h1 data-reveal>Less manual work.<br>More intelligent business<span class="accent">.</span></h1>
+        <h1 class="lines"><span class="line"><span>Less manual work.</span></span><span class="line"><span>More intelligent business<span class="accent">.</span></span></span></h1>
         <p class="hero-sub" data-reveal>Custom AI automations for trades, home services, and real estate businesses.</p>
         <div class="hero-cta" data-reveal>
           <a class="btn btn-light" href="#contact">Start a Project</a>
@@ -46,165 +49,250 @@
 
       <div class="wrap hero-stats" data-reveal>
         <dl class="stats">
-          <div class="stat"><dt class="stat-num">5 Days</dt><dd>Starter build</dd></div>
-          <div class="stat"><dt class="stat-num">2 Weeks</dt><dd>Growth build</dd></div>
-          <div class="stat"><dt class="stat-num">24/7</dt><dd>Automations running</dd></div>
-          <div class="stat"><dt class="stat-num">3</dt><dd>Industries served</dd></div>
+          <div class="stat"><dt class="stat-num"><span data-count="5">5</span> Days</dt><dd>Starter build</dd></div>
+          <div class="stat"><dt class="stat-num"><span data-count="2">2</span> Weeks</dt><dd>Growth build</dd></div>
+          <div class="stat"><dt class="stat-num"><span data-count="24">24</span>/7</dt><dd>Automations running</dd></div>
+          <div class="stat"><dt class="stat-num"><span data-count="3">3</span></dt><dd>Industries served</dd></div>
         </dl>
       </div>
     </section>
 
-    <section class="section services" id="services">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">What I do</p>
-          <h2>Services</h2>
+    <section class="automations" id="automations">
+      <div class="wrap auto-head">
+        <div>
+          <p class="label">What I automate</p>
+          <h2 class="mask"><span>Built for the work<br>you already do.</span></h2>
         </div>
-        <div class="service-grid">
-          <article class="service" data-reveal>
-            <div class="service-top">
-              <div class="service-icon">
-                <picture>
-                  <source srcset="assets/icon-automation.webp" type="image/webp">
-                  <img src="assets/icon-automation.png" alt="" width="320" height="320">
-                </picture>
-              </div>
-              <span class="num">01</span>
-            </div>
-            <h3>Business Automation</h3>
-            <p>Automate repetitive tasks and business workflows.</p>
+        <div class="auto-intro" data-reveal>
+          <p>I build automations for trades, home services, and real estate. These are the ones I set up most. Drag the ring to look around.</p>
+          <div class="ring-ctrl">
+            <button type="button" class="ring-btn" data-dir="-1" aria-label="Previous automation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="ring-btn" data-dir="1" aria-label="Next automation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <span class="mono ring-count" aria-hidden="true"><span id="ringIdx">01</span> / 08</span>
+          </div>
+        </div>
+      </div>
+      <div class="ring-scene" aria-hidden="true">
+        <div class="ring" id="ring">
+          <article class="acard" data-i="0">
+            <div class="acard-top"><span class="mono">Roofing</span><span class="mono">01</span></div>
+            <div class="acard-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></g></svg></div>
+            <h3>Quote follow-up</h3>
+            <dl class="acard-flow">
+              <div><dt class="mono">When</dt><dd>Quote sent, no reply in 2 days</dd></div>
+              <div><dt class="mono">Then</dt><dd>Friendly text and email nudges until they book.</dd></div>
+            </dl>
           </article>
-          <article class="service" data-reveal>
-            <div class="service-top">
-              <div class="service-icon">
-                <picture>
-                  <source srcset="assets/icon-ai.webp" type="image/webp">
-                  <img src="assets/icon-ai.png" alt="" width="320" height="320">
-                </picture>
-              </div>
-              <span class="num">02</span>
-            </div>
-            <h3>AI Solutions</h3>
-            <p>Put practical AI tools to work.</p>
+          <article class="acard" data-i="1">
+            <div class="acard-top"><span class="mono">HVAC</span><span class="mono">02</span></div>
+            <div class="acard-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16M6.3 6.3l11.4 11.4M17.7 6.3 6.3 17.7"/></g></svg></div>
+            <h3>Missed-call text back</h3>
+            <dl class="acard-flow">
+              <div><dt class="mono">When</dt><dd>A call goes unanswered</dd></div>
+              <div><dt class="mono">Then</dt><dd>They get a text within a minute with a link to book.</dd></div>
+            </dl>
           </article>
-          <article class="service" data-reveal>
-            <div class="service-top">
-              <div class="service-icon">
-                <picture>
-                  <source srcset="assets/icon-integration.webp" type="image/webp">
-                  <img src="assets/icon-integration.png" alt="" width="320" height="320">
-                </picture>
-              </div>
-              <span class="num">03</span>
-            </div>
-            <h3>Systems Integration</h3>
-            <p>Connect your business applications and systems.</p>
+          <article class="acard" data-i="2">
+            <div class="acard-top"><span class="mono">Construction</span><span class="mono">03</span></div>
+            <div class="acard-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4h1.5L19 7.5"/><path d="M6 7.5h13M16 7.5V12"/><path d="M14.5 12h3v2.5h-3z"/><path d="M3.5 21h7"/></g></svg></div>
+            <h3>Client job updates</h3>
+            <dl class="acard-flow">
+              <div><dt class="mono">When</dt><dd>A job moves to the next stage</dd></div>
+              <div><dt class="mono">Then</dt><dd>The client gets a short update with photos.</dd></div>
+            </dl>
           </article>
-          <article class="service" data-reveal>
-            <div class="service-top">
-              <div class="service-icon">
-                <picture>
-                  <source srcset="assets/icon-consulting.webp" type="image/webp">
-                  <img src="assets/icon-consulting.png" alt="" width="320" height="320">
-                </picture>
-              </div>
-              <span class="num">04</span>
+          <article class="acard" data-i="3">
+            <div class="acard-top"><span class="mono">Real estate</span><span class="mono">04</span></div>
+            <div class="acard-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M15.5 12v2"/></g></svg></div>
+            <h3>Instant lead reply</h3>
+            <dl class="acard-flow">
+              <div><dt class="mono">When</dt><dd>A new lead comes in from any site</dd></div>
+              <div><dt class="mono">Then</dt><dd>A personal reply goes out in seconds, day or night.</dd></div>
+            </dl>
+          </article>
+          <article class="acard" data-i="4">
+            <div class="acard-top"><span class="mono">Real estate</span><span class="mono">05</span></div>
+            <div class="acard-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/></g></svg></div>
+            <h3>Showing scheduler</h3>
+            <dl class="acard-flow">
+              <div><dt class="mono">When</dt><dd>A buyer asks to see a home</dd></div>
+              <div><dt class="mono">Then</dt><dd>Open times are offered and booked on your calendar.</dd></div>
+            </dl>
+          </article>
+          <article class="acard" data-i="5">
+            <div class="acard-top"><span class="mono">Solar</span><span class="mono">06</span></div>
+            <div class="acard-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></g></svg></div>
+            <h3>Lead qualification</h3>
+            <dl class="acard-flow">
+              <div><dt class="mono">When</dt><dd>A new solar lead fills out a form</dd></div>
+              <div><dt class="mono">Then</dt><dd>AI asks about the roof, bill, and ownership, then routes the good ones.</dd></div>
+            </dl>
+          </article>
+          <article class="acard" data-i="6">
+            <div class="acard-top"><span class="mono">Home services</span><span class="mono">07</span></div>
+            <div class="acard-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></g></svg></div>
+            <h3>Review requests</h3>
+            <dl class="acard-flow">
+              <div><dt class="mono">When</dt><dd>A job is marked complete</dd></div>
+              <div><dt class="mono">Then</dt><dd>A review request text goes out two hours later.</dd></div>
+            </dl>
+          </article>
+          <article class="acard" data-i="7">
+            <div class="acard-top"><span class="mono">Landscaping</span><span class="mono">08</span></div>
+            <div class="acard-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19 13 11"/></g></svg></div>
+            <h3>Seasonal rebooking</h3>
+            <dl class="acard-flow">
+              <div><dt class="mono">When</dt><dd>A new season starts</dd></div>
+              <div><dt class="mono">Then</dt><dd>Past clients get a text to get back on the schedule.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+      <p class="mono ring-hint" aria-hidden="true">Drag to spin</p>
+      <ul class="sr-only">
+          <li>Roofing: Quote follow-up. When quote sent, no reply in 2 days, friendly text and email nudges until they book.</li>
+          <li>HVAC: Missed-call text back. When a call goes unanswered, they get a text within a minute with a link to book.</li>
+          <li>Construction: Client job updates. When a job moves to the next stage, the client gets a short update with photos.</li>
+          <li>Real estate: Instant lead reply. When a new lead comes in from any site, a personal reply goes out in seconds, day or night.</li>
+          <li>Real estate: Showing scheduler. When a buyer asks to see a home, open times are offered and booked on your calendar.</li>
+          <li>Solar: Lead qualification. When a new solar lead fills out a form, aI asks about the roof, bill, and ownership, then routes the good ones.</li>
+          <li>Home services: Review requests. When a job is marked complete, a review request text goes out two hours later.</li>
+          <li>Landscaping: Seasonal rebooking. When a new season starts, past clients get a text to get back on the schedule.</li>
+      </ul>
+    </section>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label label-light">Services</p>
+          <h2 class="mask"><span>Four ways I help.</span></h2>
+        </div>
+        <div class="svc-grid">
+          <article class="svc" data-reveal>
+            <div class="svc-icon"><picture><source srcset="assets/icon-automation.webp" type="image/webp"><img src="assets/icon-automation.png" alt="" width="320" height="320"></picture></div>
+            <div class="svc-body">
+              <span class="mono svc-num">01</span>
+              <h3>Business Automation</h3>
+              <p>Automate repetitive tasks and business workflows.</p>
             </div>
-            <h3>Automation Consulting</h3>
-            <p>Find inefficiencies and build smarter processes.</p>
+          </article>
+          <article class="svc" data-reveal>
+            <div class="svc-icon"><picture><source srcset="assets/icon-ai.webp" type="image/webp"><img src="assets/icon-ai.png" alt="" width="320" height="320"></picture></div>
+            <div class="svc-body">
+              <span class="mono svc-num">02</span>
+              <h3>AI Solutions</h3>
+              <p>Put practical AI tools to work.</p>
+            </div>
+          </article>
+          <article class="svc" data-reveal>
+            <div class="svc-icon"><picture><source srcset="assets/icon-integration.webp" type="image/webp"><img src="assets/icon-integration.png" alt="" width="320" height="320"></picture></div>
+            <div class="svc-body">
+              <span class="mono svc-num">03</span>
+              <h3>Systems Integration</h3>
+              <p>Connect your business applications and systems.</p>
+            </div>
+          </article>
+          <article class="svc" data-reveal>
+            <div class="svc-icon"><picture><source srcset="assets/icon-consulting.webp" type="image/webp"><img src="assets/icon-consulting.png" alt="" width="320" height="320"></picture></div>
+            <div class="svc-body">
+              <span class="mono svc-num">04</span>
+              <h3>Automation Consulting</h3>
+              <p>Find inefficiencies and build smarter processes.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section process" id="process">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">Process</p>
-          <h2>How I Work</h2>
+    <section class="process" id="process">
+      <div class="wrap process-grid">
+        <div class="process-side">
+          <p class="label">How I Work</p>
+          <h2 class="mask"><span>Four steps.<br>No guesswork.</span></h2>
+          <p class="process-count mono" aria-hidden="true"><span id="stepNow">01</span> / 04</p>
         </div>
-        <ol class="steps">
-          <li class="step" data-reveal>
-            <div class="step-icon">
-              <picture>
-                <source srcset="assets/icon-discover.webp" type="image/webp">
-                <img src="assets/icon-discover.png" alt="" width="320" height="320">
-              </picture>
-            </div>
-            <span class="num">Step 01</span>
-            <h3>Discover</h3>
-            <p>Understand the business and its needs.</p>
-          </li>
-          <li class="step" data-reveal>
-            <div class="step-icon">
-              <picture>
-                <source srcset="assets/icon-design.webp" type="image/webp">
-                <img src="assets/icon-design.png" alt="" width="320" height="320">
-              </picture>
-            </div>
-            <span class="num">Step 02</span>
-            <h3>Design</h3>
-            <p>Plan the right solution.</p>
-          </li>
-          <li class="step" data-reveal>
-            <div class="step-icon">
-              <picture>
-                <source srcset="assets/icon-implement.webp" type="image/webp">
-                <img src="assets/icon-implement.png" alt="" width="320" height="320">
-              </picture>
-            </div>
-            <span class="num">Step 03</span>
-            <h3>Implement</h3>
-            <p>Build and connect the systems.</p>
-          </li>
-          <li class="step" data-reveal>
-            <div class="step-icon">
-              <picture>
-                <source srcset="assets/icon-optimize.webp" type="image/webp">
-                <img src="assets/icon-optimize.png" alt="" width="320" height="320">
-              </picture>
-            </div>
-            <span class="num">Step 04</span>
-            <h3>Optimize</h3>
-            <p>Improve and refine the workflow.</p>
-          </li>
-        </ol>
+        <div class="process-track">
+          <span class="ptrack" aria-hidden="true"><span class="ptrack-fill"></span></span>
+          <ol class="psteps">
+            <li class="pstep" data-step="0">
+              <span class="pstep-dot" aria-hidden="true"></span>
+              <div class="pstep-icon"><picture><source srcset="assets/icon-discover.webp" type="image/webp"><img src="assets/icon-discover.png" alt="" width="320" height="320"></picture></div>
+              <div>
+                <span class="mono">Step 01</span>
+                <h3>Discover</h3>
+                <p>Understand the business and its needs.</p>
+              </div>
+            </li>
+            <li class="pstep" data-step="1">
+              <span class="pstep-dot" aria-hidden="true"></span>
+              <div class="pstep-icon"><picture><source srcset="assets/icon-design.webp" type="image/webp"><img src="assets/icon-design.png" alt="" width="320" height="320"></picture></div>
+              <div>
+                <span class="mono">Step 02</span>
+                <h3>Design</h3>
+                <p>Plan the right solution.</p>
+              </div>
+            </li>
+            <li class="pstep" data-step="2">
+              <span class="pstep-dot" aria-hidden="true"></span>
+              <div class="pstep-icon"><picture><source srcset="assets/icon-implement.webp" type="image/webp"><img src="assets/icon-implement.png" alt="" width="320" height="320"></picture></div>
+              <div>
+                <span class="mono">Step 03</span>
+                <h3>Implement</h3>
+                <p>Build and connect the systems.</p>
+              </div>
+            </li>
+            <li class="pstep" data-step="3">
+              <span class="pstep-dot" aria-hidden="true"></span>
+              <div class="pstep-icon"><picture><source srcset="assets/icon-optimize.webp" type="image/webp"><img src="assets/icon-optimize.png" alt="" width="320" height="320"></picture></div>
+              <div>
+                <span class="mono">Step 04</span>
+                <h3>Optimize</h3>
+                <p>Improve and refine the workflow.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section about" id="about">
+    <section class="about" id="about">
       <div class="wrap about-grid">
         <figure class="portrait" data-reveal>
           <picture>
             <source srcset="assets/portrait.webp" type="image/webp">
             <img src="assets/portrait.jpg" alt="Illustrated portrait of Deshawn Parker" width="768" height="1024">
           </picture>
+          <figcaption class="mono"><span>Deshawn Parker</span><span>AI automation</span></figcaption>
         </figure>
-        <div class="about-copy" data-reveal>
-          <p class="eyebrow">About</p>
-          <h2>Hey, I'm Deshawn.</h2>
-          <p>I've always been the guy who gets excited about new tech. When AI started changing what was possible, I went all in. I spent my time learning the tools, building with them, and figuring out how to make them actually useful for real businesses.</p>
-          <p>What drives me is seeing businesses win. Too many owners are buried in busywork that eats up their day. I build simple automations that take that weight off, so they can get back to serving customers and growing.</p>
-          <p>If something in your business is slowing you down, I'd love to help you fix it.</p>
-          <a class="btn btn-outline" href="#contact">Start a Project</a>
+        <div class="about-copy">
+          <p class="label label-dark">About</p>
+          <h2 class="mask"><span>Hey, I'm Deshawn.</span></h2>
+          <div class="about-text" data-reveal>
+            <p class="about-lede">I've always been the guy who gets excited about new tech. When AI started changing what was possible, I went all in. I spent my time learning the tools, building with them, and figuring out how to make them actually useful for real businesses.</p>
+            <div class="about-cols">
+              <p>What drives me is seeing businesses win. Too many owners are buried in busywork that eats up their day. I build simple automations that take that weight off, so they can get back to serving customers and growing.</p>
+              <p>If something in your business is slowing you down, I'd love to help you fix it.</p>
+            </div>
+          </div>
+          <a class="btn btn-dark" href="#contact" data-reveal>Start a Project</a>
         </div>
       </div>
     </section>
 
     <section class="band" aria-labelledby="band-title">
-      <div class="band-bg" aria-hidden="true"></div>
-      <div class="wrap band-inner" data-reveal>
-        <h2 id="band-title">Let's build something smarter<span class="accent">.</span></h2>
-        <a class="btn btn-light" href="#contact">Start a Project</a>
+      <div class="band-bg" data-parallax="0.18" aria-hidden="true"></div>
+      <div class="wrap band-inner">
+        <h2 id="band-title" class="mask"><span>Let's build something smarter<span class="accent">.</span></span></h2>
+        <a class="btn btn-light" href="#contact" data-reveal>Start a Project</a>
       </div>
     </section>
 
-    <section class="section contact" id="contact">
+    <section class="contact" id="contact">
       <div class="wrap contact-grid">
-        <div class="contact-copy" data-reveal>
-          <p class="eyebrow">Contact</p>
-          <h2>Tell me about your project.</h2>
-          <p class="lede">Have a process that needs improving? Let's&nbsp;talk.</p>
+        <div class="contact-copy">
+          <p class="label">Contact</p>
+          <h2 class="mask"><span>Tell me about your project.</span></h2>
+          <p class="lede" data-reveal>Have a process that needs improving? Let's&nbsp;talk.</p>
         </div>
         <div class="contact-form" data-reveal>
           <form id="project-form" action="#TODO-form-endpoint" method="post">
@@ -237,13 +325,14 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
+      <a class="brand" href="#home">Deshawn Parker</a>
+      <p class="copyright">&copy; 2026 Deshawn Parker. All rights reserved.</p>
       <a class="social" href="https://x.com/DeshawnAI3" target="_blank" rel="noopener noreferrer" aria-label="Deshawn Parker on X">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.995-9.14L2.528 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
       </a>
-      <p class="copyright">&copy; 2026 Deshawn Parker. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="js/main.js?v=20261119e"></script>
+  <script src="js/main.js?v=20261119f"></script>
 </body>
 </html>
